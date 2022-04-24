@@ -1,4 +1,6 @@
 ﻿using System;
+using ClassBasic;
+
 namespace HelloWorld
 {
     class Calculate
@@ -42,8 +44,10 @@ namespace HelloWorld
 
     internal class Program
     {
+        public static void DrawPoint(dynamic point) => Console.WriteLine($"该点的坐标为：X - {point.x}  Y - {point.y}");
         static void Main(string[] args)
         {
+            /** 1. 基础语法练习 **/
             //Console.WriteLine("Hello World!");
             //Console.WriteLine("Hello C#!");
 
@@ -62,8 +66,8 @@ namespace HelloWorld
             //string inputStr = Console.ReadLine();
             //Console.WriteLine("输入的字符串是：{0}", inputStr);
 
-            string name = "winddancer";
-            int age = 20;
+            //string name = "winddancer";
+            //int age = 20;
 
             // 字符串格式化
             //string message = "my name is {0}. I am {1} years old";
@@ -124,19 +128,82 @@ namespace HelloWorld
             //int max_number = calc.FindMax(1, 2);
             //Console.WriteLine(max_number);
 
-            int number3 = 3;
-            int number4 = 4;
-            Calculate calc = new Calculate();
-            // 值传参调用
-            calc.swap(number3, number4);
-            Console.WriteLine("值传参后，number3的值: {0}，number4的值：{1}", number3, number4);
-            // 引用传参调用
-            calc.swapByRef(ref number3, ref number4);
-            Console.WriteLine("引用传参后，number3的值: {0}，number4的值：{1}", number3, number4);
-            // 输出传参调用
-            int number5, number6;
-            calc.change(out number5, out number6);
-            Console.WriteLine("输出传参后，number5的值: {0}，number6的值：{1}", number5, number6);
+            //int number3 = 3;
+            //int number4 = 4;
+            //Calculate calc = new Calculate();
+            //// 值传参调用
+            //calc.swap(number3, number4);
+            //Console.WriteLine("值传参后，number3的值: {0}，number4的值：{1}", number3, number4);
+            //// 引用传参调用
+            //calc.swapByRef(ref number3, ref number4);
+            //Console.WriteLine("引用传参后，number3的值: {0}，number4的值：{1}", number3, number4);
+            //// 输出传参调用
+            //int number5, number6;
+            //calc.change(out number5, out number6);
+            //Console.WriteLine("输出传参后，number5的值: {0}，number6的值：{1}", number5, number6);
+
+            /** 面向对象--基础 **/
+            // 使用普通的方法画点
+            //dynamic point = new { x = 100, y = 200};
+            //DrawPoint(point);
+
+            //dynamic point2 = new { x = "小明", y = "小华"};
+            //DrawPoint(point2);
+
+            //dynamic point3 = new { x = 300 };
+            //DrawPoint(point3);
+
+            // 使用Point类来创建坐标点
+            //Point point4 = new Point();
+            //point4.x = 10;
+            //point4.y = 20;
+            //point4.DrawPoint();
+
+            //// 对象初始化值
+            //Point point5 = new Point { x = 3, y = 4 };
+            //point5.DrawPoint();
+
+            //// 构造函数初始化值
+            //Point point6 = new Point(3);
+            //point6.DrawPoint();
+
+            //// 构造函数初始化值 -- 重载
+            //Point point7 = new Point(0, 0);
+            //point7.DrawPoint();
+            //Console.WriteLine($"两个坐标点之间的距离为{point7.getDistance(point5)}" );
+
+            // 使用set,get方法操作成员变量
+            //Point point8 = new Point(1, 2);
+            //point8.DrawPoint();
+            //point8.setX(3);
+            //Console.WriteLine($"该坐标点的 X - {point8.getX()}");
+            //point8.Y = 4;
+            //Console.WriteLine($"该坐标点的 Y - {point8.Y}");
+            //point8.Z = 5;
+            //Console.WriteLine($"该坐标点的 Z - {point8.Z}");
+
+            // 常量、readOnly和writeOnly
+            //Point point9 = new Point();
+            //Console.WriteLine($"常量 C - {Point.C}");
+            //Console.WriteLine($"readOnly R - {point9.R}");
+            //point9.W = 3;  // writeOnly只能赋值
+
+            // index和range
+            //Point point10 = new Point();
+            //Console.WriteLine($"修改字符串数组第八位前：{point10[8]}");
+            //Index index = ^1;
+            //point10[index] = "cat";
+            //Console.WriteLine($"修改字符串数组第八位后：{point10[index]}");
+            //Console.WriteLine($"获取元素为cat所在的位置：{point10["cat"]}");
+
+            //Range range = 1..7;
+            //Console.WriteLine($"1到7为的元素为：{point10.printStrArray(range)}");
+
+            // 设置partial类
+            Point point11 = new Point();
+            Console.WriteLine($"0到8为的元素为：{point11.printStrArray(0..8)}");
+            point11.alternative = "end";
+            point11.printAlternative();
         }
     }
 }
