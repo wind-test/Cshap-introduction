@@ -42,6 +42,29 @@ namespace HelloWorld
         }
     }
 
+    // 基类 Shape
+    class Shape
+    {
+        public int Height { get; set; }
+        public int Width { get; set; }
+
+        protected void displayAttr()
+        {
+            Console.Write($"Shape的高是：{Height}, 宽是：{Width}");
+        }
+        
+    }
+
+    // 派生类 Rectangle
+    class Rectangle: Shape
+    {
+        public int getArea()
+        {
+            int area = Height * Width;
+            Console.Write($"Rectangle的面积是：{area}");
+            return area;
+        }
+    }
     internal class Program
     {
         public static void DrawPoint(dynamic point) => Console.WriteLine($"该点的坐标为：X - {point.x}  Y - {point.y}");
@@ -142,7 +165,7 @@ namespace HelloWorld
             //calc.change(out number5, out number6);
             //Console.WriteLine("输出传参后，number5的值: {0}，number6的值：{1}", number5, number6);
 
-            /** 面向对象--基础 **/
+            /** 2.面向对象--基础 **/
             // 使用普通的方法画点
             //dynamic point = new { x = 100, y = 200};
             //DrawPoint(point);
@@ -200,10 +223,17 @@ namespace HelloWorld
             //Console.WriteLine($"1到7为的元素为：{point10.printStrArray(range)}");
 
             // 设置partial类
-            Point point11 = new Point();
-            Console.WriteLine($"0到8为的元素为：{point11.printStrArray(0..8)}");
-            point11.alternative = "end";
-            point11.printAlternative();
+            //Point point11 = new Point();
+            //Console.WriteLine($"0到8为的元素为：{point11.printStrArray(0..8)}");
+            //point11.alternative = "end";
+            //point11.printAlternative();
+
+            /** 3.面向对象--继承、组合 **/
+            // 继承的用法
+            Rectangle rect = new Rectangle();
+            rect.Height = 10;
+            rect.Width = 20;
+            rect.getArea();
         }
     }
 }
