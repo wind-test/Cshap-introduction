@@ -48,7 +48,19 @@ namespace HelloWorld
         public int Height { get; set; }
         public int Width { get; set; }
 
-        protected void displayAttr()
+        public Shape()
+        {
+            this.Height = 10;
+            this.Width = 10;
+        }
+
+        public Shape(int height, int width)
+        {
+            this.Height = height;
+            this.Width = width;
+        }
+
+        public void displayAttr()
         {
             Console.Write($"Shape的高是：{Height}, 宽是：{Width}");
         }
@@ -58,13 +70,16 @@ namespace HelloWorld
     // 派生类 Rectangle
     class Rectangle: Shape
     {
+        public Rectangle(int height, int width): base(height, width) { }
+        public Rectangle() { }
         public int getArea()
         {
-            int area = Height * Width;
+            int area = this.Height * this.Width;
             Console.Write($"Rectangle的面积是：{area}");
             return area;
         }
     }
+
     internal class Program
     {
         public static void DrawPoint(dynamic point) => Console.WriteLine($"该点的坐标为：X - {point.x}  Y - {point.y}");
@@ -230,10 +245,21 @@ namespace HelloWorld
 
             /** 3.面向对象--继承、组合 **/
             // 继承的用法
-            Rectangle rect = new Rectangle();
-            rect.Height = 10;
-            rect.Width = 20;
-            rect.getArea();
+            //Rectangle rect = new Rectangle();
+            //rect.Height = 10;
+            //rect.Width = 20;
+            //rect.getArea();
+
+            // 继承类的构造函数初始化
+            //Rectangle rect1 = new Rectangle(20, 30);
+            //rect1.displayAttr();
+
+            // 复合的用法
+            Logger logger = new Logger();
+            DbMigrator dbMigrator = new DbMigrator(logger);
+            Installer installer = new Installer(logger);
+            installer.Install();
+            dbMigrator.Migrate();
         }
     }
 }
