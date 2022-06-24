@@ -82,6 +82,7 @@ namespace HelloWorld
         }
     }
 
+
     internal class Program
     {
         public static void DrawPoint(dynamic point) => Console.WriteLine($"该点的坐标为：X - {point.x}  Y - {point.y}");
@@ -300,11 +301,21 @@ namespace HelloWorld
             //});
 
             // 装箱与拆箱
-            int num = 2022;
-            Object obj = num;
-            Console.WriteLine($"装箱前的数据为：{obj}");
-            int num1 = (int)obj;
-            Console.WriteLine($"拆箱后的数据为：{num1}");
+            //int num = 2022;
+            //Object obj = num;
+            //Console.WriteLine($"装箱前的数据为：{obj}");
+            //int num1 = (int)obj;
+            //Console.WriteLine($"拆箱后的数据为：{num1}");
+
+            // 虚方法与方法重写
+            var vehicleList = new List<Vehicle>();
+            vehicleList.Add(new Vehicle());
+            vehicleList.Add(new Car());
+            vehicleList.Add(new AirPlane());
+            foreach (var vehicle in vehicleList)
+            {
+                vehicle.Run();
+            }
         }
     }
 }
