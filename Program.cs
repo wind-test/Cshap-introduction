@@ -1,5 +1,7 @@
 ﻿using System;
 using ClassBasic;
+using System.Collections;
+using System.Collections.Generic;
 
 namespace HelloWorld
 {
@@ -62,7 +64,7 @@ namespace HelloWorld
 
         public void displayAttr()
         {
-            Console.Write($"Shape的高是：{Height}, 宽是：{Width}");
+            Console.WriteLine($"Shape的高是：{Height}, 宽是：{Width}");
         }
         
     }
@@ -75,7 +77,7 @@ namespace HelloWorld
         public int getArea()
         {
             int area = this.Height * this.Width;
-            Console.Write($"Rectangle的面积是：{area}");
+            Console.WriteLine($"Rectangle的面积是：{area}");
             return area;
         }
     }
@@ -255,11 +257,47 @@ namespace HelloWorld
             //rect1.displayAttr();
 
             // 复合的用法
-            Logger logger = new Logger();
-            DbMigrator dbMigrator = new DbMigrator(logger);
-            Installer installer = new Installer(logger);
-            installer.Install();
-            dbMigrator.Migrate();
+            //Logger logger = new Logger();
+            //DbMigrator dbMigrator = new DbMigrator(logger);
+            //Installer installer = new Installer(logger);
+            //installer.Install();
+            //dbMigrator.Migrate();
+
+            // 类型转换：
+            // 向上转型
+            //Rectangle rect2 = new Rectangle(20, 30);
+            //Shape shape2 = rect2;
+            //shape2.displayAttr();
+            //// 向下转型
+            //Shape shape3 = new Shape();
+            //Rectangle rect3 = (Rectangle)shape3; // 会抛出异常
+            ////使用as关键词来向下转型
+            //Rectangle rect4 = shape3 as Rectangle;
+            //if (rect4 != null)
+            //{
+            //    rect4.getArea(); // rect4是null,不会执行代码
+            //}
+            //// 使用is关键词来向下转型
+            //if (shape3 is Rectangle)
+            //{
+            //    Rectangle rect5 = (Rectangle)shape3;
+            //    rect5.getArea();
+            //}
+            // 类型转化的实际应用场景
+            var arrays = new List<Shape>();
+            arrays.Add(new Shape(10, 10));
+            arrays.Add(new Rectangle(20, 20));
+
+            arrays.ForEach(i => { 
+                if (i is Rectangle)
+                {
+                    var tmp = i as Rectangle;
+                    tmp.getArea();
+                } else
+                {
+                    i.displayAttr();
+                }
+            });
         }
     }
 }
