@@ -284,20 +284,27 @@ namespace HelloWorld
             //    rect5.getArea();
             //}
             // 类型转化的实际应用场景
-            var arrays = new List<Shape>();
-            arrays.Add(new Shape(10, 10));
-            arrays.Add(new Rectangle(20, 20));
+            //var arrays = new List<Shape>();
+            //arrays.Add(new Shape(10, 10));
+            //arrays.Add(new Rectangle(20, 20));
 
-            arrays.ForEach(i => { 
-                if (i is Rectangle)
-                {
-                    var tmp = i as Rectangle;
-                    tmp.getArea();
-                } else
-                {
-                    i.displayAttr();
-                }
-            });
+            //arrays.ForEach(i => { 
+            //    if (i is Rectangle)
+            //    {
+            //        var tmp = i as Rectangle;
+            //        tmp.getArea();
+            //    } else
+            //    {
+            //        i.displayAttr();
+            //    }
+            //});
+
+            // 装箱与拆箱
+            int num = 2022;
+            Object obj = num;
+            Console.WriteLine($"装箱前的数据为：{obj}");
+            int num1 = (int)obj;
+            Console.WriteLine($"拆箱后的数据为：{num1}");
         }
     }
 }
