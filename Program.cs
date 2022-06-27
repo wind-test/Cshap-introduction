@@ -308,8 +308,18 @@ namespace HelloWorld
             //Console.WriteLine($"拆箱后的数据为：{num1}");
 
             // 虚方法与方法重写
+            //var vehicleList = new List<Vehicle>();
+            //vehicleList.Add(new Vehicle());
+            //vehicleList.Add(new Car());
+            //vehicleList.Add(new AirPlane());
+            //foreach (var vehicle in vehicleList)
+            //{
+            //    vehicle.Run();
+            //}
+
+            // 抽象类
             var vehicleList = new List<Vehicle>();
-            vehicleList.Add(new Vehicle());
+            // 抽象类本身是不能创建实例的
             vehicleList.Add(new Car());
             vehicleList.Add(new AirPlane());
             foreach (var vehicle in vehicleList)

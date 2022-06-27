@@ -3,16 +3,26 @@
 namespace HelloWorld
 {
     // 基类：交通工具
-    class Vehicle
+    //class Vehicle
+    //{
+    //    public float Speed { get; set; }
+    //    public float Height { get; set; }
+    //    public float Width { get; set; }
+
+    //    public virtual void Run()
+    //    {
+    //        Console.WriteLine("该交通工具正在行驶");
+    //    }
+    //}
+
+    // 抽象类：交通工具
+    public abstract class Vehicle
     {
         public float Speed { get; set; }
         public float Height { get; set; }
         public float Width { get; set; }
 
-        public virtual void Run()
-        {
-            Console.WriteLine("该交通工具正在行驶");
-        }
+        public abstract void Run();
     }
 
     // 派生类：汽车
