@@ -318,14 +318,34 @@ namespace HelloWorld
             //}
 
             // 抽象类
-            var vehicleList = new List<Vehicle>();
-            // 抽象类本身是不能创建实例的
-            vehicleList.Add(new Car());
-            vehicleList.Add(new AirPlane());
-            foreach (var vehicle in vehicleList)
+            //var vehicleList = new List<Vehicle>();
+            //// 抽象类本身是不能创建实例的
+            //vehicleList.Add(new Car());
+            //vehicleList.Add(new AirPlane());
+            //foreach (var vehicle in vehicleList)
+            //{
+            //    vehicle.Run();
+            //}
+
+            // 接口的使用--订单及运费计算系统
+            Order order = new Order
             {
-                vehicle.Run();
+                Id = 00001,
+                dateTime = new DateTime(2022, 6, 30),
+                TotalPrice = 30,
+                IsShipped = false,
+            };
+            IShippingCalculator shippingCalculator;
+            if (DateTime.Today == new DateTime(2022, 11, 11))
+            {
+                shippingCalculator = new SaleShippingCalculator();
             }
+            else
+            {
+                shippingCalculator = new ShippingCalculator();
+            }
+            OrderProcessor orderProcessor = new OrderProcessor(shippingCalculator);
+            orderProcessor.Process(order);
         }
     }
 }
