@@ -328,6 +328,7 @@ namespace HelloWorld
             //    vehicle.Run();
             //}
 
+            /** 4.面向对象--接口 **/
             // 接口的使用--订单及运费计算系统
             //Order order = new Order
             //{
@@ -349,20 +350,37 @@ namespace HelloWorld
             //orderProcessor.Process(order);
 
             // 控制反转与依赖注入
-            Order order_2 = new Order
+            //Order order_2 = new Order
+            //{
+            //    Id = 3,
+            //    dateTime = new DateTime(2022, 6, 30),
+            //    TotalPrice = 30,
+            //    IsShipped = false,
+            //};
+            //ServiceCollection collection = new ServiceCollection();
+            //collection.AddScoped<IOrderProcessor, OrderProcessor>();
+            //collection.AddScoped<IShippingCalculator, SaleShippingCalculator>();
+
+            //IServiceProvider serviceProvider = collection.BuildServiceProvider();
+            //IOrderProcessor orderProcessor = serviceProvider.GetService<IOrderProcessor>();
+            //orderProcessor.Process(order_2);
+
+            // 接口的多态性
+            Order order_3 = new Order
             {
-                Id = 3,
+                Id = 4,
                 dateTime = new DateTime(2022, 6, 30),
                 TotalPrice = 30,
                 IsShipped = false,
             };
-            ServiceCollection collection = new ServiceCollection();
-            collection.AddScoped<IOrderProcessor, OrderProcessor>();
-            collection.AddScoped<IShippingCalculator, SaleShippingCalculator>();
+            IShippingCalculator shippingCalculator = new SaleShippingCalculator();
+            OrderProcessor orderProcessor = new OrderProcessor(shippingCalculator);
 
-            IServiceProvider serviceProvider = collection.BuildServiceProvider();
-            IOrderProcessor orderProcessor = serviceProvider.GetService<IOrderProcessor>();
-            orderProcessor.Process(order_2);
+            INotification emailService = new EmailService();
+            INotification smsService = new SMSService();
+            orderProcessor.RegisterNotification(emailService);
+            orderProcessor.RegisterNotification(smsService);
+            orderProcessor.Process(order_3);
         }
     }
 }
