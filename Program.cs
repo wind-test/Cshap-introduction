@@ -366,21 +366,29 @@ namespace HelloWorld
             //orderProcessor.Process(order_2);
 
             // 接口的多态性
-            Order order_3 = new Order
-            {
-                Id = 4,
-                dateTime = new DateTime(2022, 6, 30),
-                TotalPrice = 30,
-                IsShipped = false,
-            };
-            IShippingCalculator shippingCalculator = new SaleShippingCalculator();
-            OrderProcessor orderProcessor = new OrderProcessor(shippingCalculator);
+            //Order order_3 = new Order
+            //{
+            //    Id = 4,
+            //    dateTime = new DateTime(2022, 6, 30),
+            //    TotalPrice = 30,
+            //    IsShipped = false,
+            //};
+            //IShippingCalculator shippingCalculator = new SaleShippingCalculator();
+            //OrderProcessor orderProcessor = new OrderProcessor(shippingCalculator);
 
-            INotification emailService = new EmailService();
-            INotification smsService = new SMSService();
-            orderProcessor.RegisterNotification(emailService);
-            orderProcessor.RegisterNotification(smsService);
-            orderProcessor.Process(order_3);
+            //INotification emailService = new EmailService();
+            //INotification smsService = new SMSService();
+            //orderProcessor.RegisterNotification(emailService);
+            //orderProcessor.RegisterNotification(smsService);
+            //orderProcessor.Process(order_3);
+
+            /** 5. C# 高级编程 **/
+            // 结构体
+            Game game = new Game("Zelda", "Nintendo", new DateTime(2017, 3, 3));
+            //game.name = "Zelda";
+            //game.developer = "Nintendo";
+            //game.releaseDate = new DateTime(2017, 3, 3);
+            game.GetInfo();
         }
     }
 }
