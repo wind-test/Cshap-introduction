@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace HelloWorld
 {
-    internal interface IShippingCalculator
+    public interface IShippingCalculator
     {
         float CalculateShipping(Order order);
     }
