@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace HelloWorld
 {
-    public class OrderProcessor
+    public class OrderProcessor: IOrderProcessor
     {
         private readonly IShippingCalculator _shippingCalculator;
 

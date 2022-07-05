@@ -2,6 +2,7 @@
 using ClassBasic;
 using System.Collections;
 using System.Collections.Generic;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace HelloWorld
 {
@@ -328,24 +329,40 @@ namespace HelloWorld
             //}
 
             // 接口的使用--订单及运费计算系统
-            Order order = new Order
+            //Order order = new Order
+            //{
+            //    Id = 00001,
+            //    dateTime = new DateTime(2022, 6, 30),
+            //    TotalPrice = 30,
+            //    IsShipped = false,
+            //};
+            //IShippingCalculator shippingCalculator;
+            //if (DateTime.Today == new DateTime(2022, 11, 11))
+            //{
+            //    shippingCalculator = new SaleShippingCalculator();
+            //}
+            //else
+            //{
+            //    shippingCalculator = new ShippingCalculator();
+            //}
+            //OrderProcessor orderProcessor = new OrderProcessor(shippingCalculator);
+            //orderProcessor.Process(order);
+
+            // 控制反转与依赖注入
+            Order order_2 = new Order
             {
-                Id = 00001,
+                Id = 3,
                 dateTime = new DateTime(2022, 6, 30),
                 TotalPrice = 30,
                 IsShipped = false,
             };
-            IShippingCalculator shippingCalculator;
-            if (DateTime.Today == new DateTime(2022, 11, 11))
-            {
-                shippingCalculator = new SaleShippingCalculator();
-            }
-            else
-            {
-                shippingCalculator = new ShippingCalculator();
-            }
-            OrderProcessor orderProcessor = new OrderProcessor(shippingCalculator);
-            orderProcessor.Process(order);
+            ServiceCollection collection = new ServiceCollection();
+            collection.AddScoped<IOrderProcessor, OrderProcessor>();
+            collection.AddScoped<IShippingCalculator, SaleShippingCalculator>();
+
+            IServiceProvider serviceProvider = collection.BuildServiceProvider();
+            IOrderProcessor orderProcessor = serviceProvider.GetService<IOrderProcessor>();
+            orderProcessor.Process(order_2);
         }
     }
 }
