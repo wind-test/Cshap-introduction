@@ -384,11 +384,37 @@ namespace HelloWorld
 
             /** 5. C# 高级编程 **/
             // 结构体
-            Game game = new Game("Zelda", "Nintendo", new DateTime(2017, 3, 3));
-            //game.name = "Zelda";
-            //game.developer = "Nintendo";
-            //game.releaseDate = new DateTime(2017, 3, 3);
-            game.GetInfo();
+            //Game game = new Game("Zelda", "Nintendo", new DateTime(2017, 3, 3));
+            ////game.name = "Zelda";
+            ////game.developer = "Nintendo";
+            ////game.releaseDate = new DateTime(2017, 3, 3);
+            //game.GetInfo();
+
+            // 枚举
+            Weekday firday = Weekday.FRIDAY;
+
+            Console.WriteLine(firday);
+            Console.WriteLine((int)firday);
+
+            var firday2 = (Weekday)4;
+            Console.WriteLine(firday2);
+
+            Weekday day = Weekday.MONDAY;
+
+            switch (day)
+            {
+                case Weekday.MONDAY:
+                case Weekday.TUESDAY:
+                case Weekday.WEDNESDAY:
+                case Weekday.THURSDAY:
+                case Weekday.FRIDAY:
+                    Console.WriteLine("今天要上班");
+                    break;
+                case Weekday.SUNDAY:
+                case Weekday.SATURDAY:
+                    Console.WriteLine("家里蹲");
+                    break;
+            }
         }
     }
 }

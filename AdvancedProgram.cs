@@ -26,6 +26,17 @@ namespace HelloWorld
             Console.WriteLine($"上架日期: {releaseDate}");
         }
     }
+
+    enum Weekday
+    {
+        MONDAY = 1,
+        TUESDAY,
+        WEDNESDAY,
+        THURSDAY,
+        FRIDAY = 5,
+        SATURDAY,
+        SUNDAY
+    }
     internal class AdvancedProgram
     {
     }
