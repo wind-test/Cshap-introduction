@@ -417,20 +417,44 @@ namespace HelloWorld
             //}
 
             // 泛型
-            GenericList<int> list_1 = new GenericList<int>(3);
-            list_1.SetIem(1,0);
-            list_1.SetIem(2,1);
-            list_1.SetIem(3,2);
-            Console.WriteLine($"list_1第二个元素 {list_1[1]}");
-            GenericList<string> list_2 = new GenericList<string>(3);
-            list_2.SetIem("a",1);
-            list_2.SetIem("b",2);
-            list_2.SetIem("c",3);
-            Console.WriteLine($"list_2第二个元素 {list_2[1]}");
+            //GenericList<int> list_1 = new GenericList<int>(3);
+            //list_1.SetIem(1,0);
+            //list_1.SetIem(2,1);
+            //list_1.SetIem(3,2);
+            //Console.WriteLine($"list_1第二个元素 {list_1[1]}");
+            //GenericList<string> list_2 = new GenericList<string>(3);
+            //list_2.SetIem("a",1);
+            //list_2.SetIem("b",2);
+            //list_2.SetIem("c",3);
+            //Console.WriteLine($"list_2第二个元素 {list_2[1]}");
+            //AdvancedProgram utility = new AdvancedProgram();
+            //var max = utility.FindMax('a', 1);
+            //Console.WriteLine($"最大值为： {max}");
 
-            AdvancedProgram utility = new AdvancedProgram();
-            var max = utility.FindMax('a', 1);
-            Console.WriteLine($"最大值为： {max}");
+            // Nullabled 可空类型
+            MyNullable<int> num_1 = new MyNullable<int>();
+            Console.WriteLine($"num_1空值判断：{num_1.HasValue}");
+            MyNullable<int> num_2 = new MyNullable<int>(2);
+            Console.WriteLine($"num_2的值为：{num_2.GetValueOrDefault()}");
+            // C#自带的可空类型
+            Nullable<DateTime> date = null;
+            Console.WriteLine($"date的默认值为: {date.GetValueOrDefault()}");
+            date = new DateTime(2022, 7, 6);
+            Console.WriteLine($"date的赋值后为: {date.GetValueOrDefault()}");
+            // C# Nullable的简单写法
+            DateTime? date2 = new DateTime(2099, 1, 1);
+            DateTime date3 = date2.GetValueOrDefault();
+            DateTime? date4 = date3;
+            if (date4 != null)
+            {
+                Console.WriteLine($"date4值为: {date4.GetValueOrDefault()}");
+            }
+            else
+            {
+                Console.WriteLine(DateTime.Today);
+            }
+            var result = date4 ?? DateTime.Today;
+            Console.WriteLine($"date4值为: {result}");
         }
     }
 }
