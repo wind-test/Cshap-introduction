@@ -391,30 +391,46 @@ namespace HelloWorld
             //game.GetInfo();
 
             // 枚举
-            Weekday firday = Weekday.FRIDAY;
+            //Weekday firday = Weekday.FRIDAY;
 
-            Console.WriteLine(firday);
-            Console.WriteLine((int)firday);
+            //Console.WriteLine(firday);
+            //Console.WriteLine((int)firday);
 
-            var firday2 = (Weekday)4;
-            Console.WriteLine(firday2);
+            //var firday2 = (Weekday)4;
+            //Console.WriteLine(firday2);
 
-            Weekday day = Weekday.MONDAY;
+            //Weekday day = Weekday.MONDAY;
 
-            switch (day)
-            {
-                case Weekday.MONDAY:
-                case Weekday.TUESDAY:
-                case Weekday.WEDNESDAY:
-                case Weekday.THURSDAY:
-                case Weekday.FRIDAY:
-                    Console.WriteLine("今天要上班");
-                    break;
-                case Weekday.SUNDAY:
-                case Weekday.SATURDAY:
-                    Console.WriteLine("家里蹲");
-                    break;
-            }
+            //switch (day)
+            //{
+            //    case Weekday.MONDAY:
+            //    case Weekday.TUESDAY:
+            //    case Weekday.WEDNESDAY:
+            //    case Weekday.THURSDAY:
+            //    case Weekday.FRIDAY:
+            //        Console.WriteLine("今天要上班");
+            //        break;
+            //    case Weekday.SUNDAY:
+            //    case Weekday.SATURDAY:
+            //        Console.WriteLine("家里蹲");
+            //        break;
+            //}
+
+            // 泛型
+            GenericList<int> list_1 = new GenericList<int>(3);
+            list_1.SetIem(1,0);
+            list_1.SetIem(2,1);
+            list_1.SetIem(3,2);
+            Console.WriteLine($"list_1第二个元素 {list_1[1]}");
+            GenericList<string> list_2 = new GenericList<string>(3);
+            list_2.SetIem("a",1);
+            list_2.SetIem("b",2);
+            list_2.SetIem("c",3);
+            Console.WriteLine($"list_2第二个元素 {list_2[1]}");
+
+            AdvancedProgram utility = new AdvancedProgram();
+            var max = utility.FindMax('a', 1);
+            Console.WriteLine($"最大值为： {max}");
         }
     }
 }

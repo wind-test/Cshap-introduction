@@ -37,7 +37,32 @@ namespace HelloWorld
         SATURDAY,
         SUNDAY
     }
-    internal class AdvancedProgram
+
+    public class GenericList<T>
     {
+        private T[] list;
+
+        public GenericList(int size)
+        {
+            list = new T[size + 1];
+        }
+
+        public void SetIem(T item, int index)
+        {
+            list[index] = item;
+        }
+
+        public T this[int index] 
+        { 
+            get { return list[index]; } 
+        }
+    }
+
+    public class AdvancedProgram
+    {
+        public T FindMax<T>(T a, T b) where T : IComparable, new()
+        {
+            return a.CompareTo(b) > 0 ? a : b;
+        }
     }
 }
