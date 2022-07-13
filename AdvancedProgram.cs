@@ -94,4 +94,12 @@ namespace HelloWorld
             return a.CompareTo(b) > 0 ? a : b;
         }
     }
+
+    public static class StringExtension
+    {
+        public static string AddPrefix(this string s, string prefix)
+        {
+            return prefix + s;
+        }
+    }
 }

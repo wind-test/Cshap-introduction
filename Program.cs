@@ -432,29 +432,33 @@ namespace HelloWorld
             //Console.WriteLine($"最大值为： {max}");
 
             // Nullabled 可空类型
-            MyNullable<int> num_1 = new MyNullable<int>();
-            Console.WriteLine($"num_1空值判断：{num_1.HasValue}");
-            MyNullable<int> num_2 = new MyNullable<int>(2);
-            Console.WriteLine($"num_2的值为：{num_2.GetValueOrDefault()}");
-            // C#自带的可空类型
-            Nullable<DateTime> date = null;
-            Console.WriteLine($"date的默认值为: {date.GetValueOrDefault()}");
-            date = new DateTime(2022, 7, 6);
-            Console.WriteLine($"date的赋值后为: {date.GetValueOrDefault()}");
-            // C# Nullable的简单写法
-            DateTime? date2 = new DateTime(2099, 1, 1);
-            DateTime date3 = date2.GetValueOrDefault();
-            DateTime? date4 = date3;
-            if (date4 != null)
-            {
-                Console.WriteLine($"date4值为: {date4.GetValueOrDefault()}");
-            }
-            else
-            {
-                Console.WriteLine(DateTime.Today);
-            }
-            var result = date4 ?? DateTime.Today;
-            Console.WriteLine($"date4值为: {result}");
+            //MyNullable<int> num_1 = new MyNullable<int>();
+            //Console.WriteLine($"num_1空值判断：{num_1.HasValue}");
+            //MyNullable<int> num_2 = new MyNullable<int>(2);
+            //Console.WriteLine($"num_2的值为：{num_2.GetValueOrDefault()}");
+            //// C#自带的可空类型
+            //Nullable<DateTime> date = null;
+            //Console.WriteLine($"date的默认值为: {date.GetValueOrDefault()}");
+            //date = new DateTime(2022, 7, 6);
+            //Console.WriteLine($"date的赋值后为: {date.GetValueOrDefault()}");
+            //// C# Nullable的简单写法
+            //DateTime? date2 = new DateTime(2099, 1, 1);
+            //DateTime date3 = date2.GetValueOrDefault();
+            //DateTime? date4 = date3;
+            //if (date4 != null)
+            //{
+            //    Console.WriteLine($"date4值为: {date4.GetValueOrDefault()}");
+            //}
+            //else
+            //{
+            //    Console.WriteLine(DateTime.Today);
+            //}
+            //var result = date4 ?? DateTime.Today;
+            //Console.WriteLine($"date4值为: {result}");
+
+            // C#扩展方法
+            string s = "this is string";
+            Console.WriteLine(s.AddPrefix("prefix: "));
         }
     }
 }
