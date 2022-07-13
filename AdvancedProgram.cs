@@ -111,4 +111,12 @@ namespace HelloWorld
             Console.WriteLine("DynamicTest打印测试");
         }
     }
+
+    public class StringMeta
+    {
+        public void Print(string msg)
+        {
+            Console.WriteLine($"来自元数据的打印: {msg}");
+        }
+    }
 }

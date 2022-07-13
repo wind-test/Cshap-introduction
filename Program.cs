@@ -3,6 +3,7 @@ using ClassBasic;
 using System.Collections;
 using System.Collections.Generic;
 using Microsoft.Extensions.DependencyInjection;
+using System.Reflection;
 
 namespace HelloWorld
 {
@@ -467,6 +468,17 @@ namespace HelloWorld
             Console.WriteLine(dynamicTest.GetHashCode());
             dynamicTest = "hello world!";
             Console.WriteLine(dynamicTest);
+
+            // 反射-Metadata
+            // 获取类所在的路径   命名空间.类名,  项目名
+            string location = "HelloWorld.StringMeta, HelloWorld";
+            // 获取StringMeta类型
+            Type type = Type.GetType(location);
+            Object obj = Activator.CreateInstance(type);
+            MethodInfo Print = type.GetMethod("Print");
+            string msg = "msg参数";
+            Object[] parametors = new Object[]{ msg };
+            Print.Invoke(obj, parametors);
         }
     }
 }
