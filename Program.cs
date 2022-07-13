@@ -457,8 +457,16 @@ namespace HelloWorld
             //Console.WriteLine($"date4值为: {result}");
 
             // C#扩展方法
-            string s = "this is string";
-            Console.WriteLine(s.AddPrefix("prefix: "));
+            //string s = "this is string";
+            //Console.WriteLine(s.AddPrefix("prefix: "));
+
+            // C#动态类型
+            dynamic dynamicTest = new DynamicTest();
+            //var dynamicTest = new DynamicTest();
+            dynamicTest.PrintTest();
+            Console.WriteLine(dynamicTest.GetHashCode());
+            dynamicTest = "hello world!";
+            Console.WriteLine(dynamicTest);
         }
     }
 }

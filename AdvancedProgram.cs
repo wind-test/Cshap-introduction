@@ -102,4 +102,13 @@ namespace HelloWorld
             return prefix + s;
         }
     }
+
+    public class DynamicTest
+    {
+        public string Variable { get; set; }
+        public void PrintTest()
+        {
+            Console.WriteLine("DynamicTest打印测试");
+        }
+    }
 }
