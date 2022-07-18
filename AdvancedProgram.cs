@@ -119,4 +119,50 @@ namespace HelloWorld
             Console.WriteLine($"来自元数据的打印: {msg}");
         }
     }
+
+    public class DivNumbers
+    {
+        int result;
+        public DivNumbers()
+        {
+            result = 0;
+        }
+        public void Divide (int number1, int number2)
+        {
+            try
+            {
+                result = number1 / number2;
+            }
+            catch (DivideByZeroException e)
+            {
+
+                Console.WriteLine($"Exception: {e}");
+            }
+            finally
+            {
+                Console.WriteLine($"Result: {result}");
+            }
+        }
+    }
+
+    public class Temperature
+    {
+        public float temperature { get; set; }
+       
+        public void ShowTemperature ()
+        {
+            if (temperature < -273.15)
+            {
+                throw (new TempUnderAbsolteZero("temperature is under absolute zero"));
+            } else
+            {
+                Console.WriteLine($"Temperature: {temperature}");
+            }
+        }
+    }
+
+    public class TempUnderAbsolteZero: ApplicationException
+    {
+        public TempUnderAbsolteZero(string message) : base(message) { }
+    } 
 }

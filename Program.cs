@@ -462,23 +462,39 @@ namespace HelloWorld
             //Console.WriteLine(s.AddPrefix("prefix: "));
 
             // C#动态类型
-            dynamic dynamicTest = new DynamicTest();
-            //var dynamicTest = new DynamicTest();
-            dynamicTest.PrintTest();
-            Console.WriteLine(dynamicTest.GetHashCode());
-            dynamicTest = "hello world!";
-            Console.WriteLine(dynamicTest);
+            //dynamic dynamicTest = new DynamicTest();
+            ////var dynamicTest = new DynamicTest();
+            //dynamicTest.PrintTest();
+            //Console.WriteLine(dynamicTest.GetHashCode());
+            //dynamicTest = "hello world!";
+            //Console.WriteLine(dynamicTest);
 
             // 反射-Metadata
-            // 获取类所在的路径   命名空间.类名,  项目名
-            string location = "HelloWorld.StringMeta, HelloWorld";
-            // 获取StringMeta类型
-            Type type = Type.GetType(location);
-            Object obj = Activator.CreateInstance(type);
-            MethodInfo Print = type.GetMethod("Print");
-            string msg = "msg参数";
-            Object[] parametors = new Object[]{ msg };
-            Print.Invoke(obj, parametors);
+            //// 获取类所在的路径   命名空间.类名,  项目名
+            //string location = "HelloWorld.StringMeta, HelloWorld";
+            //// 获取StringMeta类型
+            //Type type = Type.GetType(location);
+            //Object obj = Activator.CreateInstance(type);
+            //MethodInfo Print = type.GetMethod("Print");
+            //string msg = "msg参数";
+            //Object[] parametors = new Object[]{ msg };
+            //Print.Invoke(obj, parametors);
+
+            // 异常处理
+            DivNumbers d = new DivNumbers();
+            d.Divide(25, 0);
+            // 自定义异常
+            Temperature temperature = new Temperature();
+            temperature.temperature = -290;
+            try
+            {
+                temperature.ShowTemperature();
+            }
+            catch (Exception e)
+            {
+
+                Console.WriteLine($"Exception: {e.Message}");
+            }
         }
     }
 }
