@@ -481,20 +481,31 @@ namespace HelloWorld
             //Print.Invoke(obj, parametors);
 
             // 异常处理
-            DivNumbers d = new DivNumbers();
-            d.Divide(25, 0);
-            // 自定义异常
-            Temperature temperature = new Temperature();
-            temperature.temperature = -290;
-            try
-            {
-                temperature.ShowTemperature();
-            }
-            catch (Exception e)
-            {
+            //DivNumbers d = new DivNumbers();
+            //d.Divide(25, 0);
+            //// 自定义异常
+            //Temperature temperature = new Temperature();
+            //temperature.temperature = -290;
+            //try
+            //{
+            //    temperature.ShowTemperature();
+            //}
+            //catch (Exception e)
+            //{
 
-                Console.WriteLine($"Exception: {e.Message}");
-            }
+            //    Console.WriteLine($"Exception: {e.Message}");
+            //}
+
+            /** 5.委托与事件 **/
+            // 委托的基本用法
+            Photo photo = Photo.Load("test.jpg");
+            PhotoFilters filters = new PhotoFilters();
+            PhotoFilterHandler filterHandlers = filters.ApplyBrightness;
+            filterHandlers += filters.ApplyBrightness;
+            filterHandlers += filters.ApplyContrast;
+            filterHandlers += filters.Resize;
+            PhotoProcessor photoProcessor = new PhotoProcessor();
+            photoProcessor.Process(photo, filterHandlers);
         }
     }
 }
