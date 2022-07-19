@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
+using System.Timers;
 
 namespace HelloWorld
 {
@@ -498,14 +499,36 @@ namespace HelloWorld
 
             /** 5.委托与事件 **/
             // 委托的基本用法
-            Photo photo = Photo.Load("test.jpg");
-            PhotoFilters filters = new PhotoFilters();
-            PhotoFilterHandler filterHandlers = filters.ApplyBrightness;
-            filterHandlers += filters.ApplyBrightness;
-            filterHandlers += filters.ApplyContrast;
-            filterHandlers += filters.Resize;
-            PhotoProcessor photoProcessor = new PhotoProcessor();
-            photoProcessor.Process(photo, filterHandlers);
+            //Photo photo = Photo.Load("test.jpg");
+            //PhotoFilters filters = new PhotoFilters();
+            //PhotoFilterHandler filterHandlers = filters.ApplyBrightness;
+            //filterHandlers += filters.ApplyBrightness;
+            //filterHandlers += filters.ApplyContrast;
+            //filterHandlers += filters.Resize;
+            //PhotoProcessor photoProcessor = new PhotoProcessor();
+            //photoProcessor.Process(photo, filterHandlers);
+
+            // 预定义事件
+            //Timer timer = new Timer();
+            //timer.Interval = 1000;
+            //EventSubscriber eventSubscriber = new EventSubscriber();
+            //timer.Elapsed += eventSubscriber.AlarmEventHandler;
+            //MyRoomMate roomMate = new MyRoomMate();
+            //timer.Elapsed += roomMate.AlarmEventHandler;
+            //timer.Start();
+            //Console.Read();
+
+            // 自定义事件
+            OrderEvent orderEvent = new OrderEvent();
+            orderEvent.OrderProcessEvent += SmsServices.OnOrderProcessed;
+            orderEvent.OrderProcessEvent += EmailServices.OnOrderProcessed;
+            OrderItem order = new OrderItem
+            {
+                Id = 10,
+                dateTime = DateTime.Now,
+                TotalPrice = 30f
+            };
+            orderEvent.Process(order);
         }
     }
 }
