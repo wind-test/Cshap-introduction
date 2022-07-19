@@ -44,11 +44,11 @@ namespace HelloWorld
         }
     }
 
-    public delegate void PhotoFilterHandler(Photo photo);
+    //public delegate void PhotoFilterHandler(Photo photo);
 
     public class PhotoProcessor
     {
-        public void Process (Photo photo, PhotoFilterHandler filterHandlers)
+        public void Process (Photo photo, Action<Photo> filterHandlers)
         {
             filterHandlers(photo);
             photo.Save();
