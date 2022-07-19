@@ -500,7 +500,7 @@ namespace HelloWorld
             // 委托的基本用法
             Photo photo = Photo.Load("test.jpg");
             PhotoFilters filters = new PhotoFilters();
-            PhotoFilterHandler filterHandlers = filters.ApplyBrightness;
+            Action<Photo> filterHandlers = filters.ApplyBrightness;
             filterHandlers += filters.ApplyBrightness;
             filterHandlers += filters.ApplyContrast;
             filterHandlers += filters.Resize;
